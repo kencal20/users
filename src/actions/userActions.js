@@ -39,7 +39,7 @@ export const getAllUsers = () => {
       .onSnapshot((snapshot) => {
         let users = [];
         snapshot.forEach((doc) => {
-          users.push(doc.data());
+users.push({...doc.data(),id:doc.id});
         });
 
         dispatch({

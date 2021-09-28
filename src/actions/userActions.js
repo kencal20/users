@@ -17,18 +17,22 @@ export const addUser = (newUser) => {
 };
 
 export const editUser = (updatedUser) => {
-  return(dispatch,state,{getFirestore})=>{
-        getFirestore().collection("users").doc(updatedUser.id).set(updatedUser).then(()=>{})
-   
-  };};
-
-
-
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .doc(updatedUser.id)
+      .set(updatedUser)
+      .then(() => {});
+  };
+};
 
 export const deleteUser = (userId) => {
-  return (dispatch,state,{getFirestore})=>{
-        getFirestore().collection("users").doc(userId).delete().then(()=>{})
-    
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .doc(userId)
+      .delete()
+      .then(() => {});
   };
 };
 
@@ -39,7 +43,7 @@ export const getAllUsers = () => {
       .onSnapshot((snapshot) => {
         let users = [];
         snapshot.forEach((doc) => {
-users.push({...doc.data(),id:doc.id});
+          users.push({ ...doc.data(), id: doc.id });
         });
 
         dispatch({
